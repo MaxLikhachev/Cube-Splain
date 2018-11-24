@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>9</integer>
+	<key>logs</key>
+	<dict>
+		<key>18DD4902-93BB-46E8-BD0B-D40B3C281954</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>18DD4902-93BB-46E8-BD0B-D40B3C281954.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564730962.75271499</real>
+			<key>timeStoppedRecording</key>
+			<real>564730963.72405195</real>
+			<key>title</key>
+			<string>Build Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>18DD4902-93BB-46E8-BD0B-D40B3C281954</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
