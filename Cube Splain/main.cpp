@@ -77,8 +77,8 @@ bool IsConfirm()    //    Подтверждение выбора пользов
 
 void ShowVector(int N, double **vector)    //    Вывод значений функций из файла на экран
 {
-    cout << "Данная функция y имеет " << N << " значений:\n";
-    for (int i = 0; i < N; i++)
+    cout << "Данная функция y имеет " << N+1 << " значений(я):\n";
+    for (int i = 0; i < N+1; i++)
         cout << "y" << i << "("<<vector[0][i]<<") = " << vector[1][i] << endl;
     cout << endl;
 }
@@ -106,10 +106,10 @@ double **GetVector() // Получение вектора значений из 
 
     double **vector = new double*[2];
     for(int k = 0; k < 2; k++)
-        vector[k] = new double[N];
+        vector[k] = new double[N+1];
 
     for(int k = 0; k < 2; k++)
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < N+1; i++)
             inputfile >> vector[k][i];
 
     inputfile.close();
@@ -168,39 +168,33 @@ double *EnterConstants()    //    Ввод количества значений
 
 int FindSplainIndex(int N, double XX, double **vector)                             //  Определение местоположения данной точки
 {
-    //for(int i=0; i<N; i++) cout << "x["<<i<<"] = " << vector[0][i]<<endl;
-
     int i=1;
-    while(i<N && XX > vector[0][i-1])
-    {
-        cout << "x["<<i<<"] = " << vector[0][i-1]<<endl;
-        i++;
-    }
+    while(i<N && XX > vector[0][i-1]) i++;
     return i;
 }
 
 double FindYY(int N, double XX, double **splain, double **vector)                     //  Определение значения функции в данной точке
 {
     int i = FindSplainIndex(N, XX, vector);
-    cout<<"i="<<i<<endl;
+    cout << "i = " << i << endl;
     double d = XX - vector[0][i];
-    double YY = splain[0][i] + splain[1][i] * d + splain[2][i]/2.0 * d * d + splain[3][i]/6.0 * d * d * d;
-
-    return YY;
+    return splain[0][i] + splain[1][i] * d + splain[2][i]/2.0 * d * d + splain[3][i]/6.0 * d * d * d;
 }
 
 double **FindSplainCoefficients(int N, double **vector, double *c)                  //  Определение коэффициентов сплайна
 {
     double ** splain = new double*[4];
     for (int i=0; i<4; i++)
-        splain[i] = new double[N];
+        splain[i] = new double[N+1];
 
-    for (int i=1; i<N; i++)
+    for (int i=1; i<N+1; i++)
     {
+        double d = vector[0][i] - vector[0][i-1];
+
         splain[0][i] = vector[1][i];
-        splain[1][i] = -1.0/3.0 * ( vector[0][i] - vector[0][i-1] ) * c[i] -1.0/6.0 * ( vector[0][i] - vector[0][i-1] ) * c[i-1] + ( vector[1][i] - vector[1][i-1] )/( vector[0][i] - vector[0][i-1] );
+        splain[1][i] = -1.0/3.0 * d * c[i] -1.0/6.0 * d * c[i-1] + ( vector[1][i] - vector[1][i-1] )/d;
         splain[2][i] = c[i];
-        splain[3][i] = ( c[i] - c[i-1] )/( vector[0][i] - vector[0][i-1] );
+        splain[3][i] = ( c[i] - c[i-1] )/d;
     }
 
     return splain;
@@ -210,26 +204,26 @@ double *ThreePointSweep(int N, int A, int B, double **vector)                   
 {
     double *c = new double[N+1];
 
-    double *mu = new double[N];
-    double *nu = new double[N];
+    double *mu = new double[N+1];
+    double *nu = new double[N+1];
 
-    mu[0]=0;
-    nu[0]=A;
+    mu[1]=0;
+    nu[1]=A;
 
     for(int i=1; i<N; i++)
     {
-        double d = 2.0*(vector[0][i+1]-vector[0][i-1]) + (vector[0][i]-vector[0][i-1])*mu[i-1];
-        mu[i] = (vector[0][i+1]-vector[0][i])/d;
-        nu[i] = (6.0*vector[1][i] - (vector[0][i]-vector[0][i-1])*mu[i-1]);
+        double d = 2.0*(vector[0][i+1]-vector[0][i-1]) + (vector[0][i]-vector[0][i-1])*mu[i];
+        mu[i+1] = (vector[0][i+1]-vector[0][i])/d;
+        nu[i+1] = (6.0*vector[1][i] - (vector[0][i]-vector[0][i-1])*mu[i]);
     }
 
-    for(int i=0; i<N+1; i++) cout << "mu["<< i <<"]=" << mu[i]<< " nu["<< i <<"]=" <<nu[i]<<endl;
+    for(int i=1; i<N+1; i++) cout << "mu["<< i <<"]=" << mu[i]<< " nu["<< i <<"]=" <<nu[i]<<endl;
 
     c[N]=((6.0/(vector[0][N]-vector[0][N-1]))*(B - (vector[1][N]-vector[1][N-1])/(vector[0][N]-vector[0][N-1]) ) - nu[N-1])/(2+mu[N-1]);
 
-    for (int i=N-1; i>=0; i--)
+    for (int i=N-1; i>0; i--)
         c[i] = mu[i]*c[i+1]+nu[i];
 
-    for(int i=0; i<N+1; i++) cout << "c["<<i<<"] = " << c[i]<<endl;
+    for(int i=1; i<N+1; i++) cout << "c["<<i<<"] = " << c[i]<<endl;
     return c;
 }

@@ -6,6 +6,151 @@
 	<integer>9</integer>
 	<key>logs</key>
 	<dict>
+		<key>2F173D05-B4FF-46D5-BD12-E882E91BF5EF</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>2F173D05-B4FF-46D5-BD12-E882E91BF5EF.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837433.51003504</real>
+			<key>timeStoppedRecording</key>
+			<real>564837434.91230202</real>
+			<key>title</key>
+			<string>Debug Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>2F173D05-B4FF-46D5-BD12-E882E91BF5EF</string>
+		</dict>
+		<key>3E85A954-AE29-4EE0-9675-B9B46FE4CAE1</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>3E85A954-AE29-4EE0-9675-B9B46FE4CAE1.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837368.75372505</real>
+			<key>timeStoppedRecording</key>
+			<real>564837370.16507304</real>
+			<key>title</key>
+			<string>Debug Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>3E85A954-AE29-4EE0-9675-B9B46FE4CAE1</string>
+		</dict>
+		<key>8B3B0B1F-C79C-48BF-AB4D-EE48E056AAD9</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>8B3B0B1F-C79C-48BF-AB4D-EE48E056AAD9.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837399.83414102</real>
+			<key>timeStoppedRecording</key>
+			<real>564837401.28575099</real>
+			<key>title</key>
+			<string>Debug Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>8B3B0B1F-C79C-48BF-AB4D-EE48E056AAD9</string>
+		</dict>
+		<key>C2D4A42C-1E96-4FDD-9670-CB6D5F448A03</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>C2D4A42C-1E96-4FDD-9670-CB6D5F448A03.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837471.19189501</real>
+			<key>timeStoppedRecording</key>
+			<real>564837472.64710701</real>
+			<key>title</key>
+			<string>Debug Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>C2D4A42C-1E96-4FDD-9670-CB6D5F448A03</string>
+		</dict>
+		<key>C7D300FA-AC3B-4D11-AD94-0A689922907D</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>C7D300FA-AC3B-4D11-AD94-0A689922907D.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Debug Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837299.20485103</real>
+			<key>timeStoppedRecording</key>
+			<real>564837309.05454397</real>
+			<key>title</key>
+			<string>Debug Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>C7D300FA-AC3B-4D11-AD94-0A689922907D</string>
+		</dict>
 		<key>EAE84215-E3AD-453B-8E41-14D6972D41FD</key>
 		<dict>
 			<key>className</key>

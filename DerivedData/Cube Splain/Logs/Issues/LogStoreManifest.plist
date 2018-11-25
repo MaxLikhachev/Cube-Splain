@@ -6,7 +6,7 @@
 	<integer>9</integer>
 	<key>logs</key>
 	<dict>
-		<key>502D12FE-B949-401E-A0FD-10D894A1A033</key>
+		<key>BFDF8281-0395-41FE-AF47-A84E28D79332</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -15,19 +15,19 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.tool</string>
 			<key>fileName</key>
-			<string>502D12FE-B949-401E-A0FD-10D894A1A033.xcactivitylog</string>
+			<string>BFDF8281-0395-41FE-AF47-A84E28D79332.xcactivitylog</string>
 			<key>highLevelStatus</key>
 			<string>S</string>
 			<key>signature</key>
 			<string>Cube_Splain-gexdwkqhatjgiabeobfabyunkwtl</string>
 			<key>timeStartedRecording</key>
-			<real>564730962.82129598</real>
+			<real>564837470.610654</real>
 			<key>timeStoppedRecording</key>
-			<real>564730963.72389698</real>
+			<real>564837471.184834</real>
 			<key>title</key>
 			<string>Build target Cube Splain</string>
 			<key>uniqueIdentifier</key>
-			<string>502D12FE-B949-401E-A0FD-10D894A1A033</string>
+			<string>BFDF8281-0395-41FE-AF47-A84E28D79332</string>
 		</dict>
 	</dict>
 	<key>preserveOldLogs</key>

@@ -35,6 +35,151 @@
 			<key>uniqueIdentifier</key>
 			<string>18DD4902-93BB-46E8-BD0B-D40B3C281954</string>
 		</dict>
+		<key>940BB589-350B-43B4-8143-0737B89C942F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>940BB589-350B-43B4-8143-0737B89C942F.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837298.00909305</real>
+			<key>timeStoppedRecording</key>
+			<real>564837299.29324996</real>
+			<key>title</key>
+			<string>Build Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>940BB589-350B-43B4-8143-0737B89C942F</string>
+		</dict>
+		<key>95CE6691-D53B-4F9E-B6DE-A8D69C9E64F5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>95CE6691-D53B-4F9E-B6DE-A8D69C9E64F5.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837368.71907306</real>
+			<key>timeStoppedRecording</key>
+			<real>564837368.76724601</real>
+			<key>title</key>
+			<string>Build Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>95CE6691-D53B-4F9E-B6DE-A8D69C9E64F5</string>
+		</dict>
+		<key>97812F79-5808-4F74-BA21-57AF10D788DA</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>97812F79-5808-4F74-BA21-57AF10D788DA.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837470.58399999</real>
+			<key>timeStoppedRecording</key>
+			<real>564837471.28684497</real>
+			<key>title</key>
+			<string>Build Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>97812F79-5808-4F74-BA21-57AF10D788DA</string>
+		</dict>
+		<key>A3BE17A9-F542-446F-9BA0-C4EBAAD9AF54</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A3BE17A9-F542-446F-9BA0-C4EBAAD9AF54.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837399.152071</real>
+			<key>timeStoppedRecording</key>
+			<real>564837399.907318</real>
+			<key>title</key>
+			<string>Build Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>A3BE17A9-F542-446F-9BA0-C4EBAAD9AF54</string>
+		</dict>
+		<key>CB68A7C4-4C03-451C-BB8D-88DCE2A8AA83</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CB68A7C4-4C03-451C-BB8D-88DCE2A8AA83.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>Cube Splain project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Cube Splain</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Cube Splain</string>
+			<key>timeStartedRecording</key>
+			<real>564837433.47518206</real>
+			<key>timeStoppedRecording</key>
+			<real>564837433.59296405</real>
+			<key>title</key>
+			<string>Build Cube Splain</string>
+			<key>uniqueIdentifier</key>
+			<string>CB68A7C4-4C03-451C-BB8D-88DCE2A8AA83</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
