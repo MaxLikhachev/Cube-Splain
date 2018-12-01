@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  Cube Splain
+//  CubeSplain
 //
-//  Created by Максим Лихачев on 28/10/2018.
+//  Created by Максим Лихачев on 26/11/2018.
 //  Copyright © 2018 Максим Лихачев. All rights reserved.
 //
 
@@ -11,110 +11,114 @@
 #include <iostream>
 using namespace std;
 
-void ShowIntro();                                                                           //  Заставка
-bool IsConfirm();                                                                           //  Подтверждение выбора пользователя
-void ShowVector(int N, double **vector);                                                    //  Вывод аргументов и значений функций из файла на экран
-bool isVectorInvalid(int N, double **vector);                                               //  Проверка на ошибки
-double **GetVector();                                                                       //  Получение вектора значений из файла
-void PutResult(int IER, double YY, double XX);                                              //  Запись результата в файл
-int IsError(int N, double **vector, double XX);                                             //  Проверка малости количества значений
-double *EnterConstants();                                                                   //  Ввод количества значений и проверка валидности
-double *ThreePointSweep (int N, int A, int B, double **vector);                             //  Решение методом трехточечной прогонки
-double **FindSplainCoefficients(int N, double **vector, double *c);                         //  Определение коэффициентов сплайна
-double FindYY(int N, double XX, double **splain, double **vector);                          //  Определение значения функции в данной точке
-
-int main(int argc, const char * argv[])
+struct Function // Структура функции
 {
-    setlocale(LC_ALL, "Russian");
+    double x;
+    double f;
+};
 
-    ShowIntro();
+struct BoundaryValues // Структура для хранения граничных значений
+{
+    double A;
+    double B;
+    double XX;
+};
 
-    double *coefficients = EnterConstants();
-    int N = coefficients[0];
-    int A = coefficients[1];
-    int B = coefficients[2];
-    double XX = coefficients[3];
-    delete coefficients;
+struct Coefficients //  Структура коэффициентов трехдиагональной матрицы
+{
+    double A;
+    double B;
+    double C;
+    double F;
+};
 
-    //cout<<N<<" "<<A<<" "<<B<< " " << XX << endl<<endl;
+double * ThreePointSweep(int n, Coefficients * rate) // Метод трехточечной прогонки
+{
+    double * x = new double [n+1];
+    double * mu = new double [n+1];
+    double * nu = new double [n+1];
 
-    double **vector = GetVector();
+    mu[1] = - rate[0].B / rate[0].C;
+    nu[1] =   rate[0].F / rate[0].C;
 
-    
-    if(IsError(N, vector, XX)==0)
+    for( int i=1; i<n; i++ )
     {
-        cout<<"OK: Значения функции прочитаны\n";
-        ShowVector(N, vector);
-
-        int YY = FindYY(N, XX, FindSplainCoefficients(N, vector, ThreePointSweep(N, A, B, vector)), vector);
-        cout << "Значение функции в точке " << XX << " = " << YY << endl;
-
-        PutResult(IsError(N, vector, XX), YY, XX);
-
+        double D = rate[i].C + rate[i].A * mu[i];
+        mu[i+1] = - rate[i].B/ D;
+        nu[i+1] = ( rate[i].F - rate[i].A * nu[i] )/ D;
     }
-    cout << "\nПрограмма завершена\n";
 
-    for(int k = 0; k < 2; k++) delete vector[k];
-    delete vector;
-    return 0;
+    x[n] = (rate[n].F - rate[n].A * nu[n]) / (rate[n].C + rate[n].A * mu[n]);
+
+    for(int i=n-1; i>=0; i--) x[i] = mu[i+1] * x[i+1] + nu[i+1];
+
+    return x;
 }
 
-void ShowIntro()    //    Заставка
+double FindYY(double XX, double * h, double * c, Function * vector) // Нахождение требуемого значения функции через кубический сплайн
 {
-    cout << "Выполнил студент 3 курса 61 группы\nЛихачев Максим\n\n";
+    int i=1;
+    while (vector[i].x<XX) i++;
+
+    cout << "\nКоэффициенты S[" << i << "]:\n";
+
+    double a=vector[i].f;
+    double d=(c[i]-c[i-1])/h[i];
+    double b=h[i]/2.0*c[i] - h[i]*h[i]/6.0*d + (vector[i].f-vector[i-1].f)/h[i];
+
+    cout << a << " " << b << " " << c[i] << " " << d << endl;
+
+    double x = XX - vector[i].x;
+    return a + x*b + x*x*c[i]/2.0 + x*x*x*d/6.0;;
 }
 
-bool IsConfirm()    //    Подтверждение выбора пользователя
-{
-    cout << "\tY/N\n";
-    bool isConfirm = false;
-    char command;
-    cin >> command;
-    if (command == 'y' || command == 'Y') isConfirm = true;
 
-    return isConfirm;
+double * GetH(int n, Function * vector) // Определение шага
+{
+    double * h = new double[n+1];
+    for (int i=1; i<=n; i++) h[i] = vector[i].x - vector[i-1].x;
+    return h;
 }
 
-void ShowVector(int N, double **vector)    //    Вывод значений функций из файла на экран
+Coefficients * InitCoefficients(int n, BoundaryValues constants, double * h, Function * vector) // Определение коэффициентов СУ
 {
-    cout << "Данная функция y имеет " << N+1 << " значений(я):\n";
-    for (int i = 0; i < N+1; i++)
-        cout << "y" << i << "("<<vector[0][i]<<") = " << vector[1][i] << endl;
-    cout << endl;
+    Coefficients *rate = new Coefficients[n+1];
+
+    rate[0].C = 1.0;
+    rate[0].B = 0.0;
+    rate[0].F = constants.A;
+
+    rate[n].C = 2.0;
+    rate[n].A = 0.0;
+    rate[n].F = (6.0/h[n]) * (constants.B - (vector[n].f-vector[n-1].f)/h[n]);
+
+    for (int i=1; i<n; i++)
+    {
+        rate[i].A = h[i];
+        rate[i].B = h[i+1];
+        rate[i].C = 2.0 * (h[i] + h[i+1]);
+        rate[i].F = 6.0 * vector[i].f;
+    }
+
+    return rate;
 }
 
-bool isVectorInvalid(int N, double **vector)    //  Проверка элементов вектора на возрастание
+int Read(BoundaryValues &constant, Function *&vector) // Чтение из файла
 {
-    bool isError = false;
+    ifstream input("input.txt");
 
-    for (int i = 1; i < N && !isError; i++)
-        if (vector[0][i-1] > vector[0][i])
-            isError = true;
+    int n;
+    input >> n;
+    input >> constant.A;
+    input >> constant.B;
+    input >> constant.XX;
 
-    return isError;
-}
+    vector = new Function[n+1];
+    for (int i=0; i<=n; i++) input >> vector[i].x;
+    for (int i=0; i<=n; i++) input >> vector[i].f;
 
-double **GetVector() // Получение вектора значений из файла
-{
-    ifstream inputfile("input.txt");
-
-    int N, A, B, XX;
-    inputfile >> N;
-    inputfile >> A;
-    inputfile >> B;
-    inputfile >> XX;
-
-    double **vector = new double*[2];
-    for(int k = 0; k < 2; k++)
-        vector[k] = new double[N+1];
-
-    for(int k = 0; k < 2; k++)
-        for (int i = 0; i < N+1; i++)
-            inputfile >> vector[k][i];
-
-    inputfile.close();
-
-    return vector;
+    input.close();
+    return n;
 }
 
 void PutResult(int IER, double YY, double XX)  // Запись результата в файл
@@ -125,25 +129,31 @@ void PutResult(int IER, double YY, double XX)  // Запись результа�
         case 1:outputfile << "N слишком мало! (N < 2)\n\n";break;
         case 2:outputfile << "Нарушен порядок возрастания аргументов функции\n\n";break;
         case 3:outputfile << "XX не является элементом заданного множества аргументов функции\n\n";break;
-        default: outputfile << "Значение функции в точке " << XX << " = " << YY << "\n";
+        default: outputfile << "Программа завершена успешно\nЗначение функции в точке " << XX << " = " << YY << "\n";
     }
     outputfile.close();
 }
 
-int IsError(int N, double **vector, double XX)    //    Проверка ошибок
+int IsError(int N, Function *vector, double XX)    //    Проверка ошибок
 {
+    bool isError = false;
+
+    for (int i = 1; i < N && !isError; i++)
+        if (vector[i-1].x > vector[i].x)
+            isError = true;
+
     int IER = 0;
     if (N < 2)
     {
         IER = 1;
         cout << "IER = 1\nN слишком мало! (N < 2)\nПрограмма будет завершена\n\n";
     }
-    else if (isVectorInvalid(N, vector))
+    else if (isError)
     {
         IER = 2;
         cout << "IER = 2\nНарушен порядок возрастания аргументов функции\nПрограмма будет завершена\n\n";
     }
-    else if (XX < vector[0][0] || XX > vector[0][N-1])
+    else if (XX < vector[0].x || XX > vector[N].x)
     {
         IER = 3;
         cout << "IER = 3\nXX не является элементом заданного множества аргументов функции\nПрограмма будет завершена\n\n";
@@ -153,77 +163,30 @@ int IsError(int N, double **vector, double XX)    //    Проверка оши�
     return IER;
 }
 
-double *EnterConstants()    //    Ввод количества значений, и граничных услловий
+int main(int argc, const char * argv[])
 {
-    ifstream inputfile("input.txt");
+    setlocale(LC_ALL, "Russian");
 
-    double *constants = new double[4];
+    BoundaryValues constant;
+    Function *vector;
+    int n = Read(constant,vector);
 
-    for(int i=0; i<4; i++)
-        inputfile >> constants[i];
+    int isError = IsError(n, vector, constant.XX);
 
-    inputfile.close();
-    return constants;
-}
-
-int FindSplainIndex(int N, double XX, double **vector)                             //  Определение местоположения данной точки
-{
-    int i=1;
-    while(i<N && XX > vector[0][i-1]) i++;
-    return i;
-}
-
-double FindYY(int N, double XX, double **splain, double **vector)                     //  Определение значения функции в данной точке
-{
-    int i = FindSplainIndex(N, XX, vector);
-    cout << "i = " << i << endl;
-    double d = XX - vector[0][i];
-    return splain[0][i] + splain[1][i] * d + splain[2][i]/2.0 * d * d + splain[3][i]/6.0 * d * d * d;
-}
-
-double **FindSplainCoefficients(int N, double **vector, double *c)                  //  Определение коэффициентов сплайна
-{
-    double ** splain = new double*[4];
-    for (int i=0; i<4; i++)
-        splain[i] = new double[N+1];
-
-    for (int i=1; i<N+1; i++)
+    if(isError==0)
     {
-        double d = vector[0][i] - vector[0][i-1];
+        double *h = GetH(n, vector);
 
-        splain[0][i] = vector[1][i];
-        splain[1][i] = -1.0/3.0 * d * c[i] -1.0/6.0 * d * c[i-1] + ( vector[1][i] - vector[1][i-1] )/d;
-        splain[2][i] = c[i];
-        splain[3][i] = ( c[i] - c[i-1] )/d;
+        cout << "Выполнил студент 3 курса 61 группы\nЛихачев Максим\n\n";
+        cout << "Функция имеет " << n+1 << " значений и граничные условия: S''(" << vector[0].x << ") = " << constant.A << " и S'(" <<vector[n].x << ") = " << constant.B << endl;
+        for(int i=0; i<=n; i++) cout <<"f("<<vector[i].x << ") = " << vector[i].f<<endl;
+        cout<<"Найти значение функции в точке: "<<constant.XX<<endl;
+
+        double YY = FindYY(constant.XX, h, ThreePointSweep(n, InitCoefficients(n,constant,h,vector)),vector);
+
+        cout<<"\nИскомое значение функции в точке "<<constant.XX<<": "<< YY<<endl;
+        PutResult(isError, YY, constant.XX);
     }
 
-    return splain;
-}
-
-double *ThreePointSweep(int N, int A, int B, double **vector)                                                 //    Решение методом трехточечной прогонки
-{
-    double *c = new double[N+1];
-
-    double *mu = new double[N+1];
-    double *nu = new double[N+1];
-
-    mu[1]=0;
-    nu[1]=A;
-
-    for(int i=1; i<N; i++)
-    {
-        double d = 2.0*(vector[0][i+1]-vector[0][i-1]) + (vector[0][i]-vector[0][i-1])*mu[i];
-        mu[i+1] = (vector[0][i+1]-vector[0][i])/d;
-        nu[i+1] = (6.0*vector[1][i] - (vector[0][i]-vector[0][i-1])*mu[i]);
-    }
-
-    for(int i=1; i<N+1; i++) cout << "mu["<< i <<"]=" << mu[i]<< " nu["<< i <<"]=" <<nu[i]<<endl;
-
-    c[N]=((6.0/(vector[0][N]-vector[0][N-1]))*(B - (vector[1][N]-vector[1][N-1])/(vector[0][N]-vector[0][N-1]) ) - nu[N-1])/(2+mu[N-1]);
-
-    for (int i=N-1; i>0; i--)
-        c[i] = mu[i]*c[i+1]+nu[i];
-
-    for(int i=1; i<N+1; i++) cout << "c["<<i<<"] = " << c[i]<<endl;
-    return c;
+    return 0;
 }
